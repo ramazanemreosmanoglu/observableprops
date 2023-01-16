@@ -6,7 +6,6 @@ Just a simple utility for automatically creating class properties and adding obs
 
 ``` python
 from observableprops import ObservablesMeta
-from threading import Event
 
 
 class ColorBox(metaclass=ObservablesMeta):
