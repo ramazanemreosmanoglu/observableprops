@@ -22,6 +22,6 @@ def gui_update_color(new):
 colorbox = ColorBox()
 colorbox.add_color_observer(gui_update_color)
 
-colorbox.color = "Blue" # All the observers will be called
+colorbox.color = "Blue" # All of the observers will be called
 ```
 
