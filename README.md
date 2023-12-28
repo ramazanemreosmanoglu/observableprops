@@ -1,6 +1,6 @@
 # observableprops
 
-Just a simple utility to automatically create class properties and adding observers to it. 
+A simple utility to add observers to instance properties
 
 ## Example Usage
 
