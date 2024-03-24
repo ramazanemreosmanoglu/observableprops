@@ -1,0 +1,4 @@
+build/
+dist/
+observableprops.egg-info/
+*.pyc
