@@ -23,20 +23,16 @@ class ObservablesMeta(type):
     def __new__(mcs, name, bases, attrs):
         class_obj = super().__new__(mcs, name, bases, attrs)
         ObservablesMeta.define_properties(class_obj)
+        setattr(class_obj, 'add_observer', ObservablesMeta.add_observer)
         return class_obj
 
     @staticmethod
     def define_properties(class_obj):
-        for nameattr, observer_adder_attr in class_obj.observable_properties.items():
+        for nameattr in class_obj.observable_properties:
             holderattr = f"_{nameattr}"
             observers_attr = f"_{nameattr}_observers"
             setattr(class_obj, holderattr, None)
             setattr(class_obj, observers_attr, [])
-            setattr(
-                class_obj,
-                observer_adder_attr,
-                lambda obj, f: getattr(obj, observers_attr).append(f)
-            )
             prop_obj = property(
                 fget=ObservableProp(holderattr, observers_attr).get,
                 fset=ObservableProp(holderattr, observers_attr).set,
@@ -45,3 +41,8 @@ class ObservablesMeta(type):
             setattr(class_obj, nameattr, prop_obj)
 
         return class_obj
+
+    @staticmethod
+    def add_observer(obj, prop_name, observer):
+        observers_attr = f"_{prop_name}_observers"
+        getattr(obj, observers_attr).append(observer)

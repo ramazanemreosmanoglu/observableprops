@@ -3,9 +3,9 @@ from observableprops import ObservablesMeta
 
 
 class ColorBox(metaclass=ObservablesMeta):
-    observable_properties = {
-        "color": "add_color_observer",
-    }
+    observable_properties = [
+        "color",
+    ]
 
 
 class TestObservableProps(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestObservableProps(unittest.TestCase):
 
 
         colorbox = ColorBox()
-        colorbox.add_color_observer(gui_update_color)
+        colorbox.add_observer("color", gui_update_color)
         colorbox.color = "Blue"  # All of the observers will be called
 
         self.assertTrue(self.color_updated, "Color was not updated")
