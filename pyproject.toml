@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "observableprops"
-version = "0.1.0"
+version = "0.2.0"
 description = "Utility for creating properties and adding observers to them."
 authors = ["ramazanemreosmanoglu <ramazanemre@protonmail.com>"]
 readme = "README.md"
